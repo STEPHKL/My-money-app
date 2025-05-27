@@ -6,6 +6,7 @@ import AccountCard from "../components/AccountCard";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 import fakeData from "../data/fakeData";
+import ExpensesPieChart from "../components/ExpensesPieChart";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -115,80 +116,13 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Recent transactions */}
-      <div>
-        <h3
-          style={{
-            ...fonts.heading3,
-            color: colors.textPrimary,
-            marginTop: "32px",
-            marginBottom: "12px",
-          }}
-        >
-          Recent transactions
-        </h3>
-
-        {recentRecords.length === 0 ? (
-          <p style={{ ...fonts.body, color: colors.textSecondary }}>
-            No transactions yet.
-          </p>
-        ) : (
-          <>
-            <ul style={{ listStyle: "none", padding: 0 }}>
-              {recentRecords.map((rec) => {
-                const amount = parseFloat(rec.amount);
-                const formattedAmount = !isNaN(amount)
-                  ? amount.toFixed(2)
-                  : "0.00";
-
-                return (
-                  <li
-                    key={rec.id}
-                    style={{
-                      background: colors.white,
-                      borderRadius: "12px",
-                      padding: "12px 16px",
-                      marginBottom: "10px",
-                      boxShadow: "0 2px 8px rgba(0,0,0,0.03)",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      ...fonts.body,
-                      color: colors.textPrimary,
-                    }}
-                  >
-                    <span>{rec.notes || rec.type}</span>
-                    <span
-                      style={{
-                        color:
-                          rec.type === "income"
-                            ? colors.income
-                            : colors.expense,
-                      }}
-                    >
-                      {rec.type === "income" ? "+" : "-"} ${formattedAmount}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
-
-            {/* View all button */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "12px",
-              }}
-            >
-              <Button
-                label="View all"
-                variant="text"
-                onClick={() => navigate("/registers")}
-              />
-            </div>
-          </>
-        )}
-      </div>
+        {/* Expenses chart */}
+        <div style={{ marginTop: "32px" }}>
+          <h3 style={{ ...fonts.heading3, color: colors.textPrimary, marginBottom: "12px" }}>
+            My expenses
+          </h3>
+          <ExpensesPieChart />
+        </div>
 
       <BottomNav />
     </div>

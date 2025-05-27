@@ -11,6 +11,7 @@ const fakeRecords = [
     id: 2,
     type: "expense",
     notes: "Groceries",
+    category: "food",
     amount: 120.5,
     account: "Credit card",
     date: "2025-05-11",
@@ -18,7 +19,8 @@ const fakeRecords = [
   {
     id: 3,
     type: "expense",
-    notes: "Coffee",
+    notes: "Coffee",    
+    category: "food",
     amount: 4.25,
     account: "Credit card",
     date: "2025-05-12",
@@ -26,9 +28,10 @@ const fakeRecords = [
   {
     id: 4,
     type: "expense",
-    notes: "Restaurant",
+    notes: "Shopping",
+    category: "shopping",
     amount: 14,
-    account: "Mercado Pago", // corregido
+    account: "Mercado Pago", 
     date: "2025-05-12",
   },
   {
@@ -36,7 +39,16 @@ const fakeRecords = [
     type: "income",
     notes: "Transfer",
     amount: 1500,
-    account: "Mercado Pago", // corregido
+    account: "Mercado Pago", 
+    date: "2025-05-12",
+  },
+  {
+    id: 6,
+    type: "expense",
+    notes: "Course",
+    category: "investment",
+    amount: 267,
+    account: "Mercado Pago", 
     date: "2025-05-12",
   },
 ];

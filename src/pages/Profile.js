@@ -1,5 +1,7 @@
 import React from "react";
 import BottomNav from "../components/BottomNav";
+import fonts from "../styles/fonts"
+import colors from "../styles/colors";
 
 const Profile = () => {
   return (
@@ -8,15 +10,15 @@ const Profile = () => {
         width: "414px",
         minHeight: "896px",
         margin: "0 auto",
-        background: "#F9F9F9",
+        background: colors.background,
         fontFamily: "'Inter', sans-serif",
         padding: "32px 24px 100px"
       }}
     >
       {/* Título */}
-      <h1 style={{ fontSize: "24px", fontWeight: "700", marginBottom: "32px" }}>
+      <h2 style={{ ...fonts.heading2, color: colors.textPrimary }}>
         Profile
-      </h1>
+      </h2>
 
       {/* Avatar + Nombre */}
       <div style={{ textAlign: "center", marginBottom: "32px" }}>

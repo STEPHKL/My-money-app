@@ -1,20 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BottomNav from "../components/BottomNav";
-import Carousel from "../components/Carousel";
 import Button from "../components/Button";
+import AccountCard from "../components/AccountCard";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
+import fakeData from "../data/fakeData";
 
 const Home = () => {
   const navigate = useNavigate();
   const [recentRecords, setRecentRecords] = useState([]);
 
   useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("records")) || [];
-    const recent = [...stored].reverse().slice(0, 3);
-    setRecentRecords(recent);
+    localStorage.setItem("records", JSON.stringify(fakeData));
+    setRecentRecords([...fakeData].reverse().slice(0, 3));
   }, []);
+
+  // 🔢 Calcular balances por cuenta
+  const accountSums = fakeData.reduce((acc, record) => {
+    const { account, amount, type } = record;
+    const numericAmount = parseFloat(amount);
+    if (!acc[account]) acc[account] = 0;
+    acc[account] += type === "income" ? numericAmount : -numericAmount;
+    return acc;
+  }, {});
+
+  // 💰 Calcular balance total
+  const totalBalance = Object.values(accountSums).reduce((sum, val) => sum + val, 0);
+
+  const formattedTotal = `$${totalBalance.toLocaleString(undefined, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
+
+  const accounts = [
+    { name: "Galicia Bank", variant: "galicia" },
+    { name: "Credit card", variant: "credit" },
+    { name: "Mercado Pago", variant: "Mercado Pago" },
+  ];
 
   return (
     <div
@@ -55,7 +78,7 @@ const Home = () => {
             color: colors.textPrimary,
           }}
         >
-          $12,500.00
+          {formattedTotal}
         </div>
       </div>
 
@@ -70,7 +93,26 @@ const Home = () => {
         >
           My accounts
         </h3>
-        <Carousel />
+        <div style={{ display: "flex", gap: "12px", overflowX: "auto" }}>
+          {accounts.map((acc) => {
+            const balance = accountSums[acc.name] || 0;
+            const formatted = `$${balance.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}`;
+
+            return (
+              <div style={{ minWidth: "160px", flex: "0 0 auto" }} key={acc.name}>
+                <AccountCard
+                  name={acc.name}
+                  balance={formatted}
+                  variant={acc.variant}
+                  width="100%" // 100% del contenedor de 160px
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Recent transactions */}
@@ -131,7 +173,13 @@ const Home = () => {
             </ul>
 
             {/* View all button */}
-            <div style={{ display: "flex", justifyContent: "center", marginTop: "12px" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "12px",
+              }}
+            >
               <Button
                 label="View all"
                 variant="text"

@@ -11,7 +11,7 @@ const Button = ({ label = "Button", variant = "filled", onClick }) => {
     fontWeight: "600",
     cursor: "pointer",
     width: "100%",
-    maxWidth: "354px",
+    maxWidth: "366px",
     textAlign: "center",
     transition: "all 0.2s ease-in-out",
   };

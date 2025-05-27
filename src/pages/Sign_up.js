@@ -1,6 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import image2 from "../assets/Image_2.png"
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -19,6 +20,14 @@ const SignUp = () => {
         fontFamily: "'DM Sans', sans-serif"
       }}
     >
+      <img src={image2} 
+      alt="image2" 
+      style={{ 
+        display: "block",
+        margin: "100px auto 0",
+        width: "80%", 
+        height: "auto" }} />
+
       {/* Title */}
       <div
         className="PageTitle"

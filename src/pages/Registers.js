@@ -7,14 +7,9 @@ import fonts from "../styles/fonts";
 const Registers = () => {
   const [records, setRecords] = useState([]);
 
-  useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("records"));
-    if (!stored || stored.length === 0) {
-      localStorage.setItem("records", JSON.stringify(fakeRecords));
-      setRecords([...fakeRecords].reverse());
-    } else {
-      setRecords(stored.reverse());
-    }
+    useEffect(() => {
+    localStorage.setItem("records", JSON.stringify(fakeRecords));
+    setRecords([...fakeRecords].reverse()); // Mostrar los más recientes arriba
   }, []);
 
   // Group by date
@@ -41,18 +36,12 @@ const Registers = () => {
         minHeight: "896px",
         margin: "0 auto",
         background: colors.background,
-        padding: "24px",
+        padding: "32px 24px",
         fontFamily: fonts.fontFamily,
       }}
     >
-      <h2
-        style={{
-          ...fonts.heading2,
-          color: colors.textPrimary,
-          marginBottom: "24px",
-        }}
-      >
-        Registers
+      <h2 style={{ ...fonts.heading2, color: colors.textPrimary }}>
+        Last records
       </h2>
 
       {records.length === 0 ? (

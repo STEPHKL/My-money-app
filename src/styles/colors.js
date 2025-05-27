@@ -4,7 +4,7 @@ const colors = {
   primary: "#9DF069",
   galicia: "#F5A623",       
   creditCard: "#B37DFF",    
-  debitCard: "#4A90F9",     
+  mercadopagoCard: "#4A90F9",     
   income: "#6FCF97",        
   expense: "#EB5757",       
   background: "#F9F9F9",    

@@ -16,7 +16,7 @@ const Carousel = () => {
       >
         <AccountCard name="Galicia Bank" balance="$65.892" variant="galicia" />
         <AccountCard name="Credit Card" balance="-$5.673" variant="credit" />
-        <AccountCard name="Debit Card" balance="$130.543" variant="debit" />
+        <AccountCard name="Mercado Pago" balance="$130.543" variant="debit" />
 
       </div>
     </div>

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FiX } from "react-icons/fi";
 import Button from "../components/Button";
+import IconButton from "../components/IconButton";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 import AccountCard from "../components/AccountCard";
 
-const New_registration = () => {
+const NewRegistration = () => {
   const navigate = useNavigate();
 
   const [type, setType] = useState("Expense");
@@ -32,7 +34,7 @@ const New_registration = () => {
     existing.push(newRecord);
     localStorage.setItem("records", JSON.stringify(existing));
 
-    navigate("/Home");
+    navigate("/home");
   };
 
   const types = ["Expense", "Transfer", "Income"];
@@ -45,11 +47,23 @@ const New_registration = () => {
         width: "414px",
         margin: "0 auto",
         padding: "32px 24px 100px",
-        background: "#FFFFFF",
-        fontFamily: "'Inter', sans-serif"
+        background: colors.white,
+        fontFamily: fonts.fontFamily
       }}
     >
-      <h1 style={{ fontSize: "24px", fontWeight: "700", marginBottom: "24px" }}>
+      {/* Botón cerrar */}
+      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "8px" }}>
+        <IconButton
+          icon={FiX}
+          onClick={() => navigate("/home")}
+          title="Cancel"
+          ariaLabel="Cancel registration"
+          color={colors.textSecondary}
+          size={24}
+        />
+      </div>
+
+      <h1 style={{ ...fonts.heading2, color: colors.textPrimary, marginBottom: "24px" }}>
         New registration
       </h1>
 
@@ -63,8 +77,8 @@ const New_registration = () => {
               border: "none",
               background: "none",
               fontWeight: type === t ? "700" : "400",
-              color: type === t ? "#27AE60" : "#000",
-              borderBottom: type === t ? "2px solid #27AE60" : "2px solid transparent",
+              color: type === t ? colors.income : colors.textPrimary,
+              borderBottom: type === t ? `2px solid ${colors.income}` : "2px solid transparent",
               paddingBottom: "4px",
               fontSize: "16px",
               cursor: "pointer"
@@ -77,9 +91,28 @@ const New_registration = () => {
 
       {/* Monto */}
       <div style={{ marginBottom: "24px" }}>
-        <label style={{ fontSize: "14px", color: "#828282" }}>Amount</label>
-        <div style={{ fontSize: "28px", fontWeight: "700", marginTop: "4px" }}>
-          $ <input
+        <label style={{ ...fonts.small, color: colors.textSecondary }}>
+          Amount
+        </label>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            marginTop: "4px",
+          }}
+        >
+          <span
+            style={{
+              fontSize: "28px",
+              fontWeight: "700",
+              color: colors.textPrimary,
+            }}
+          >
+            $
+          </span>
+          <input
             type="number"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
@@ -88,14 +121,17 @@ const New_registration = () => {
               border: "none",
               outline: "none",
               fontSize: "28px",
-              fontWeight: "700"
+              fontWeight: "700",
+              color: colors.textPrimary,
+              background: "none",
+              width: "100%",
             }}
           />
         </div>
       </div>
 
       {/* Cuentas */}
-        <div style={{ marginBottom: "24px" }}>
+      <div style={{ marginBottom: "24px" }}>
         <label
           style={{
             ...fonts.small,
@@ -109,7 +145,7 @@ const New_registration = () => {
 
         <div style={{ display: "flex", gap: "12px", overflowX: "auto", paddingBottom: "8px" }}>
           {accounts.map((acc) => {
-            let variant = "debit";
+            let variant = "Mercado Pago";
             if (acc === "Galicia Bank") variant = "galicia";
             if (acc === "Credit card") variant = "credit";
 
@@ -127,10 +163,9 @@ const New_registration = () => {
         </div>
       </div>
 
-
       {/* Categorías */}
       <div style={{ marginBottom: "24px" }}>
-        <label style={{ fontSize: "14px", color: "#828282", display: "block", marginBottom: "8px" }}>
+        <label style={{ ...fonts.small, color: colors.textSecondary, display: "block", marginBottom: "8px" }}>
           Select the category
         </label>
         <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
@@ -139,12 +174,12 @@ const New_registration = () => {
               key={cat}
               onClick={() => setCategory(cat)}
               style={{
-                border: category === cat ? "2px solid #27AE60" : "1.5px solid #E0E0E0",
+                border: category === cat ? `2px solid ${colors.income}` : "1.5px solid #E0E0E0",
                 borderRadius: "16px",
                 padding: "12px 16px",
                 fontWeight: "500",
                 background: "none",
-                color: "#000",
+                color: colors.textPrimary,
                 cursor: "pointer"
               }}
             >
@@ -166,7 +201,8 @@ const New_registration = () => {
             padding: "12px",
             border: "1px solid #E0E0E0",
             borderRadius: "12px",
-            fontSize: "16px"
+            fontSize: "16px",
+            fontFamily: fonts.fontFamily
           }}
         />
       </div>
@@ -183,20 +219,21 @@ const New_registration = () => {
             padding: "12px",
             border: "1px solid #E0E0E0",
             borderRadius: "12px",
-            fontSize: "16px"
+            fontSize: "16px",
+            fontFamily: fonts.fontFamily
           }}
         />
       </div>
 
-      {/* Button save */}
-     <Button
-      label="Save"
-      variant="filled"
-      onClick={handleSubmit}
-      style={{ width: "100%", maxWidth: "320px" }}
-    />
-</div>
-);
+      {/* Botón Save */}
+      <Button
+        label="Save"
+        variant="filled"
+        onClick={handleSubmit}
+        style={{ width: "100%", maxWidth: "320px" }}
+      />
+    </div>
+  );
 };
 
-export default New_registration;
+export default NewRegistration;

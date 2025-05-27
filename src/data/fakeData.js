@@ -4,7 +4,7 @@ const fakeRecords = [
     type: "income",
     notes: "Salary",
     amount: 3000,
-    account: "Galicia bank",
+    account: "Galicia Bank", 
     date: "2025-05-10",
   },
   {
@@ -28,7 +28,7 @@ const fakeRecords = [
     type: "expense",
     notes: "Restaurant",
     amount: 14,
-    account: "Mercado pago",
+    account: "Mercado Pago", // corregido
     date: "2025-05-12",
   },
   {
@@ -36,9 +36,8 @@ const fakeRecords = [
     type: "income",
     notes: "Transfer",
     amount: 1500,
-    account: "Mercado pago",
+    account: "Mercado Pago", // corregido
     date: "2025-05-12",
   },
 ];
-
 export default fakeRecords;

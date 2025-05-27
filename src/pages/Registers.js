@@ -1,17 +1,38 @@
 import React, { useEffect, useState } from "react";
 import BottomNav from "../components/BottomNav";
-import fakeRecords from "../data/fakeData"; // ✅ Ajustá la ruta según tu proyecto
+import fakeRecords from "../data/fakeData";
+import colors from "../styles/colors";
+import fonts from "../styles/fonts";
 
 const Registers = () => {
   const [records, setRecords] = useState([]);
 
   useEffect(() => {
-    localStorage.removeItem("records");
-
-    localStorage.setItem("records", JSON.stringify(fakeRecords));
-
-    setRecords([...fakeRecords].reverse());
+    const stored = JSON.parse(localStorage.getItem("records"));
+    if (!stored || stored.length === 0) {
+      localStorage.setItem("records", JSON.stringify(fakeRecords));
+      setRecords([...fakeRecords].reverse());
+    } else {
+      setRecords(stored.reverse());
+    }
   }, []);
+
+  // Group by date
+  const groupedByDate = records.reduce((acc, rec) => {
+    const dateKey = rec.date;
+    if (!acc[dateKey]) acc[dateKey] = [];
+    acc[dateKey].push(rec);
+    return acc;
+  }, {});
+
+  // Format date in English
+  const formatDate = (isoDate) => {
+    const date = new Date(isoDate);
+    return date.toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "long",
+    });
+  };
 
   return (
     <div
@@ -19,57 +40,81 @@ const Registers = () => {
         width: "414px",
         minHeight: "896px",
         margin: "0 auto",
-        background: "#F9F9F9",
+        background: colors.background,
         padding: "24px",
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: fonts.fontFamily,
       }}
     >
-      <h2 style={{ fontSize: "24px", fontWeight: "600", marginBottom: "24px" }}>
+      <h2
+        style={{
+          ...fonts.heading2,
+          color: colors.textPrimary,
+          marginBottom: "24px",
+        }}
+      >
         Registers
       </h2>
 
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {records.length === 0 && (
-          <li
-            style={{
-              color: "#999",
-              textAlign: "center",
-              marginTop: "12px",
-            }}
-          >
-            No records yet.
-          </li>
-        )}
-
-        {records.map((rec) => {
-          const amount = parseFloat(rec.amount);
-          const formattedAmount = !isNaN(amount) ? amount.toFixed(2) : "0.00";
-
-          return (
-            <li
-              key={rec.id}
-              style={{
-                background: "#FFF",
-                borderRadius: "12px",
-                padding: "12px 16px",
-                marginBottom: "10px",
-                boxShadow: "0 2px 8px rgba(0, 0, 0, 0.03)",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <span>{rec.notes || rec.type}</span>
-              <span
+      {records.length === 0 ? (
+        <div style={{ color: "#999", textAlign: "center", marginTop: "12px" }}>
+          No records yet.
+        </div>
+      ) : (
+        Object.keys(groupedByDate)
+          .sort((a, b) => new Date(b) - new Date(a)) // sort by most recent date
+          .map((dateKey) => (
+            <div key={dateKey} style={{ marginBottom: "24px" }}>
+              {/* Date header */}
+              <div
                 style={{
-                  color: rec.type === "income" ? "#219653" : "#EB5757",
+                  ...fonts.heading3,
+                  color: colors.textSecondary,
+                  marginBottom: "8px",
                 }}
               >
-                {rec.type === "income" ? "+" : "-"} ${formattedAmount}
-              </span>
-            </li>
-          );
-        })}
-      </ul>
+                {formatDate(dateKey)}
+              </div>
+
+              <ul style={{ listStyle: "none", padding: 0 }}>
+                {groupedByDate[dateKey].map((rec) => {
+                  const amount = parseFloat(rec.amount);
+                  const formattedAmount = !isNaN(amount)
+                    ? amount.toFixed(2)
+                    : "0.00";
+
+                  return (
+                    <li
+                      key={rec.id}
+                      style={{
+                        background: colors.white,
+                        borderRadius: "12px",
+                        padding: "12px 16px",
+                        marginBottom: "10px",
+                        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.03)",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        ...fonts.body,
+                        color: colors.textPrimary,
+                      }}
+                    >
+                      <span>{rec.notes || rec.type}</span>
+                      <span
+                        style={{
+                          color:
+                            rec.type === "income"
+                              ? colors.income
+                              : colors.expense,
+                        }}
+                      >
+                        {rec.type === "income" ? "+" : "-"} ${formattedAmount}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))
+      )}
 
       <BottomNav />
     </div>

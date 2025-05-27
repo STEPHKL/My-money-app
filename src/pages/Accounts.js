@@ -1,6 +1,5 @@
 import React from "react";
 import BottomNav from "../components/BottomNav";
-import { FiPlus } from "react-icons/fi";
 import Button from "../components/Button";
 
 const Accounts = () => {

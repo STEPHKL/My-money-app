@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import colors from "../styles/colors";
+import fonts from "../styles/fonts";
+import AccountCard from "../components/AccountCard";
 
 const New_registration = () => {
   const navigate = useNavigate();
@@ -92,36 +95,38 @@ const New_registration = () => {
       </div>
 
       {/* Cuentas */}
-      <div style={{ marginBottom: "24px" }}>
-        <label style={{ fontSize: "14px", color: "#828282", display: "block", marginBottom: "8px" }}>
+        <div style={{ marginBottom: "24px" }}>
+        <label
+          style={{
+            ...fonts.small,
+            color: colors.textSecondary,
+            display: "block",
+            marginBottom: "8px",
+          }}
+        >
           Select the account
         </label>
-        <div style={{ display: "flex", gap: "12px" }}>
-          {accounts.map((acc) => (
-            <button
-              key={acc}
-              onClick={() => setAccount(acc)}
-              style={{
-                background:
-                  acc === "Galicia Bank"
-                    ? "linear-gradient(90deg, #FDC830 0%, #F37335 100%)"
-                    : acc === "Credit card"
-                    ? "linear-gradient(90deg, #B06AB3 0%, #4568DC 100%)"
-                    : "linear-gradient(90deg, #CCCCCC 0%, #E0E0E0 100%)",
-                border: account === acc ? "3px solid #27AE60" : "none",
-                borderRadius: "16px",
-                color: "#fff",
-                fontWeight: "600",
-                padding: "16px 20px",
-                flex: 1,
-                cursor: "pointer"
-              }}
-            >
-              {acc}
-            </button>
-          ))}
+
+        <div style={{ display: "flex", gap: "12px", overflowX: "auto", paddingBottom: "8px" }}>
+          {accounts.map((acc) => {
+            let variant = "debit";
+            if (acc === "Galicia Bank") variant = "galicia";
+            if (acc === "Credit card") variant = "credit";
+
+            return (
+              <AccountCard
+                key={acc}
+                name={acc}
+                variant={variant}
+                hideBalance={true}
+                isSelected={account === acc}
+                onClick={() => setAccount(acc)}
+              />
+            );
+          })}
         </div>
       </div>
+
 
       {/* Categorías */}
       <div style={{ marginBottom: "24px" }}>
@@ -184,25 +189,14 @@ const New_registration = () => {
       </div>
 
       {/* Button save */}
-      <div
-        style={{
-          position: "absolute",
-          top: "640px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "100%",
-          display: "flex",
-          justifyContent: "center"
-        }}
-      >
-      <Button
-        label="Save"
-        variant="filled"
-        onClick={() => navigate("/home")}
-  />
+     <Button
+      label="Save"
+      variant="filled"
+      onClick={handleSubmit}
+      style={{ width: "100%", maxWidth: "320px" }}
+    />
 </div>
-    </div>
-  );
+);
 };
 
 export default New_registration;

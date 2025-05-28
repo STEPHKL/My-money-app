@@ -51,7 +51,7 @@ const NewRegistration = () => {
         fontFamily: fonts.fontFamily
       }}
     >
-      {/* Botón cerrar */}
+      {/* Close button */}
       <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "8px" }}>
         <IconButton
           icon={FiX}
@@ -67,7 +67,7 @@ const NewRegistration = () => {
         New registration
       </h1>
 
-      {/* Tipo de operación */}
+      {/* Operation type */}
       <div style={{ display: "flex", justifyContent: "space-around", marginBottom: "24px" }}>
         {types.map((t) => (
           <button
@@ -89,7 +89,7 @@ const NewRegistration = () => {
         ))}
       </div>
 
-      {/* Monto */}
+      {/* Amount */}
       <div style={{ marginBottom: "24px" }}>
         <label style={{ ...fonts.small, color: colors.textSecondary }}>
           Amount
@@ -130,7 +130,7 @@ const NewRegistration = () => {
         </div>
       </div>
 
-      {/* Cuentas */}
+      {/* Accounts */}
       <div style={{ marginBottom: "24px" }}>
         <label
           style={{
@@ -163,7 +163,7 @@ const NewRegistration = () => {
         </div>
       </div>
 
-      {/* Categorías */}
+      {/* Category */}
       <div style={{ marginBottom: "24px" }}>
         <label style={{ ...fonts.small, color: colors.textSecondary, display: "block", marginBottom: "8px" }}>
           Select the category
@@ -189,7 +189,7 @@ const NewRegistration = () => {
         </div>
       </div>
 
-      {/* Fecha */}
+      {/* Date */}
       <div style={{ marginBottom: "16px" }}>
         <input
           type="date"
@@ -207,7 +207,7 @@ const NewRegistration = () => {
         />
       </div>
 
-      {/* Descripción */}
+      {/* Description */}
       <div style={{ marginBottom: "24px" }}>
         <input
           type="text"
@@ -225,7 +225,7 @@ const NewRegistration = () => {
         />
       </div>
 
-      {/* Botón Save */}
+      {/* Save Button */}
       <Button
         label="Save"
         variant="filled"

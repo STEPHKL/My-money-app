@@ -1,126 +1,114 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
-
+import colors from "../styles/colors";
+import fonts from "../styles/fonts";
 
 const Create_account = () => {
   const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <div
       style={{
         width: "414px",
-        height: "896px",
+        minHeight: "896px",
         margin: "0 auto",
-        background: "#FFFFFF",
-        position: "relative",
-        fontFamily: "'Inter', sans-serif"
+        background: colors.background,
+        padding: "48px 24px",
+        fontFamily: fonts.fontFamily,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
       }}
     >
-      {/* Título */}
-      <div
+      {/* Title */}
+      <h1
         style={{
-          position: "absolute",
-          top: "120px",
-          left: "36px",
-          right: "36px",
+          ...fonts.heading1,
+          color: colors.textPrimary,
           textAlign: "center",
-          fontSize: "34px",
-          fontWeight: "700",
-          color: "#000"
+          marginBottom: "32px",
         }}
       >
         Create your account
-      </div>
+      </h1>
 
-      {/* Input: Full Name */}
+      {/* Full Name input */}
       <input
         type="text"
         placeholder="Full Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
         style={{
-          width: "343px",
+          width: "100%",
+          maxWidth: "343px",
           height: "56px",
-          position: "absolute",
-          top: "220px",
-          left: "36px",
           padding: "16px",
+          marginBottom: "16px",
           border: "1px solid #BDBDBD",
           borderRadius: "12px",
-          fontSize: "16px"
+          fontSize: "16px",
+          ...fonts.body,
         }}
       />
 
-      {/* Input: Email */}
+      {/* Email input */}
       <input
         type="email"
         placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         style={{
-          width: "343px",
+          width: "100%",
+          maxWidth: "343px",
           height: "56px",
-          position: "absolute",
-          top: "290px",
-          left: "36px",
           padding: "16px",
+          marginBottom: "16px",
           border: "1px solid #BDBDBD",
           borderRadius: "12px",
-          fontSize: "16px"
+          fontSize: "16px",
+          ...fonts.body,
         }}
       />
 
-      {/* Input: Password */}
+      {/* Password input */}
       <input
         type="password"
         placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         style={{
-          width: "343px",
+          width: "100%",
+          maxWidth: "343px",
           height: "56px",
-          position: "absolute",
-          top: "360px",
-          left: "36px",
           padding: "16px",
+          marginBottom: "32px",
           border: "1px solid #BDBDBD",
           borderRadius: "12px",
-          fontSize: "16px"
+          fontSize: "16px",
+          ...fonts.body,
         }}
       />
 
-      {/* Button Create Account */}
-      <div
-        style={{
-          position: "absolute",
-          top: "440px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "100%",
-          display: "flex",
-          justifyContent: "center"
-        }}
-      >
+      {/* Create Account button */}
       <Button
         label="Create account"
         variant="filled"
         onClick={() => navigate("/home")}
-  />
-</div>
+        style={{ width: "100%", maxWidth: "343px", marginBottom: "16px" }}
+      />
 
-      {/* Enlace a Login */}
-     <div
-      style={{
-        position: "absolute",
-        top: "516px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        width: "100%",
-        display: "flex",
-        justifyContent: "center"
-      }}
-    >
+      {/* Link to Login */}
       <Button
         label="Already have an account? Log in"
         variant="text"
         onClick={() => navigate("/login")}
+        style={{ maxWidth: "343px" }}
       />
-    </div>
     </div>
   );
 };

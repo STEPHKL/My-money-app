@@ -15,12 +15,12 @@ const Profile = () => {
         padding: "32px 24px 100px"
       }}
     >
-      {/* Título */}
+      {/* Title */}
       <h2 style={{ ...fonts.heading2, color: colors.textPrimary }}>
         Profile
       </h2>
 
-      {/* Avatar + Nombre */}
+      {/* Avatar + Name */}
       <div style={{ textAlign: "center", marginBottom: "32px" }}>
         <img
           src="https://i.pravatar.cc/160?img=1"

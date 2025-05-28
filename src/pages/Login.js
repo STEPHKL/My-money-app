@@ -1,52 +1,57 @@
-import React from "react";
-import { useNavigate } from "react-router-dom"; // 
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import colors from "../styles/colors";
+import fonts from "../styles/fonts";
 
 const Login = () => {
-  const navigate = useNavigate(); // 
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <div
-      className="Login"
       style={{
         width: "414px",
-        height: "896px",
+        minHeight: "896px",
         margin: "0 auto",
-        background: "#FFFFFF",
-        position: "relative",
-        fontFamily: "'Inter', sans-serif"
+        background: colors.background,
+        padding: "48px 24px",
+        fontFamily: fonts.fontFamily,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
       }}
     >
-      {/* Título */}
-      <div
+      {/* Title */}
+      <h1
         style={{
-          position: "absolute",
-          top: "160px",
-          left: "36px",
-          right: "36px",
+          ...fonts.heading1,
+          color: colors.textPrimary,
           textAlign: "center",
-          fontSize: "34px",
-          fontWeight: "700",
-          color: "#000"
+          marginBottom: "32px",
         }}
       >
-        Log In to your account
-      </div>
+        Log in to your account
+      </h1>
 
       {/* Email input */}
       <input
         type="email"
         placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         style={{
-          width: "343px",
+          width: "100%",
+          maxWidth: "343px",
           height: "56px",
-          position: "absolute",
-          top: "270px",
-          left: "36px",
           padding: "16px",
+          marginBottom: "16px",
           border: "1px solid #BDBDBD",
           borderRadius: "12px",
-          fontSize: "16px"
+          fontSize: "16px",
+          ...fonts.body,
         }}
       />
 
@@ -54,55 +59,36 @@ const Login = () => {
       <input
         type="password"
         placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         style={{
-          width: "343px",
+          width: "100%",
+          maxWidth: "343px",
           height: "56px",
-          position: "absolute",
-          top: "340px",
-          left: "36px",
           padding: "16px",
+          marginBottom: "32px",
           border: "1px solid #BDBDBD",
           borderRadius: "12px",
-          fontSize: "16px"
+          fontSize: "16px",
+          ...fonts.body,
         }}
       />
 
-      {/* Button login */}
-      <div
-        style={{
-          position: "absolute",
-          top: "440px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "100%",
-          display: "flex",
-          justifyContent: "center"
-        }}
-      >
+      {/* Login button */}
       <Button
         label="Log in"
         variant="filled"
         onClick={() => navigate("/home")}
-  />
-</div>
+        style={{ width: "100%", maxWidth: "343px", marginBottom: "16px" }}
+      />
 
       {/* Forgot password */}
-      <div
-      style={{
-        position: "absolute",
-        top: "516px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        width: "100%",
-        display: "flex",
-        justifyContent: "center"
-      }}
-    >
       <Button
         label="Forgot password"
         variant="text"
+        onClick={() => alert("Functionality not implemented")}
+        style={{ maxWidth: "343px" }}
       />
-    </div>
     </div>
   );
 };

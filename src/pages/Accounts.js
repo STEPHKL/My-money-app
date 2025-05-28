@@ -7,7 +7,7 @@ import fonts from "../styles/fonts";
 import fakeData from "../data/fakeData";
 
 const Accounts = () => {
-  // Sumar montos por cuenta
+  // Add amounts per account
   const accountSums = fakeData.reduce((acc, record) => {
     const { account, amount, type } = record;
     const numericAmount = parseFloat(amount);

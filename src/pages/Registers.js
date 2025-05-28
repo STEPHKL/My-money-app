@@ -20,7 +20,7 @@ const Registers = () => {
     return acc;
   }, {});
 
-  // Format date in English
+  // Format date 
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
     return date.toLocaleDateString("en-US", {

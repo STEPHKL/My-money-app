@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# My Money
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![My Money App Banner](./assets/banner.png)
 
-## Available Scripts
+## Context
 
-In the project directory, you can run:
+This project, **My Money**, is my final assignment for the "Development of Interactive Systems" course in the Master's program. The goal was to design and implement a mobile application that empowers users to track their incomes, expenses, and transfers in a clear and visual way, promoting better financial awareness and savings habits.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Total Balance Overview:** See all your accounts and their combined balance at a glance.
+- **Spending Categories:** Visualize your expenses by category with easy-to-understand charts.
+- **Recent Activity:** Quickly review recent transactions and keep your finances up-to-date.
+- **Add Transactions:** Register new incomes, expenses, or transfers with details like amount, date, category, and account.
+- **User Profile:** Manage and view personal information.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Screenshots
 
-### `npm test`
+<p align="center">
+  <img src="screenshots/Login.png" width="250" alt="Login Screen" />
+  <img src="screenshots/Home.png" width="250" alt="Home Screen" />
+  <img src="screenshots/New_registration.png" width="250" alt="New Registration Screen" />
+</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> _Replace the image paths with your actual screenshots or Figma exports._
 
-### `npm run build`
+## Design & Development
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Design:** The initial design was created in Figma, focusing on intuitive user flow and clean visual hierarchy. Key screens include:
+  - Login
+  - Dashboard
+  - Accounts
+  - Profile
+  - Register Movement Form
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Prototype:** The functional prototype was built using reusable front-end components:
+  - Account cards
+  - Navigation bar
+  - Action buttons
+  - Pie chart for expense distribution
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Data:** The app uses simulated ("fake") data to demonstrate dynamic content and user interactions throughout the interface.
 
-### `npm run eject`
+## Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Figma** (UI/UX Design & Prototyping)
+- **React** (Front-end development, component architecture)
+- **JavaScript**
+- **CSS Modules** / Styled Components (add your approach)
+- **Chart.js** or similar (for visualizing data)
+- [Any other libraries/plugins you used]
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## What I Learned
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Working on My Money helped me deepen my skills in front-end development, especially in building reusable React components and managing interface logic. Despite facing personal challenges, I enjoyed the process and learned a lot about designing user-centric mobile applications.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Getting Started
 
-## Learn More
+1. **Clone the repository:**  
+   `git clone https://github.com/your-username/my-money.git`
+2. **Install dependencies:**  
+   `npm install`
+3. **Start the development server:**  
+   `npm start`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> _This project uses fake data for demonstration purposes. No real financial data is handled._
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Acknowledgments
 
-### Code Splitting
+Thank you for your time and for reviewing my project! I hope you enjoy the presentation.  
+If you have any feedback or suggestions, feel free to open an issue or contact me.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+_My Money_ — Final Project for "Development of Interactive Systems"

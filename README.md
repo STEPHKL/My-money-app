@@ -1,7 +1,5 @@
 # My Money
 
-![My Money App Banner](./assets/banner.png)
-
 ## Context
 
 This project, **My Money**, is my final assignment for the "Development of Interactive Systems" course in the Master's program. The goal was to design and implement a mobile application that empowers users to track their incomes, expenses, and transfers in a clear and visual way, promoting better financial awareness and savings habits.
@@ -17,12 +15,11 @@ This project, **My Money**, is my final assignment for the "Development of Inter
 ## Screenshots
 
 <p align="center">
-  <img src="screenshots/Login.png" width="250" alt="Login Screen" />
-  <img src="screenshots/Home.png" width="250" alt="Home Screen" />
-  <img src="screenshots/New_registration.png" width="250" alt="New Registration Screen" />
+  <img src="public/screenshots/Login.png" width="250" alt="Login Screen" />
+  <img src="public/screenshots/Home.png" width="250" alt="Home Screen" />
+  <img src="public/screenshots/New_registration.png" width="250" alt="New Registration Screen" />
 </p>
 
-> _Replace the image paths with your actual screenshots or Figma exports._
 
 ## Design & Development
 
